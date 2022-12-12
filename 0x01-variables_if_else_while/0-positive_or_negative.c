@@ -5,14 +5,15 @@
 /**
  * main block if else 
  *
- * get a random number and say if is positive or negative
+ *Description: get a random number and say if is positive or negative
  *
- * Return  Always 0 (success)
+ * Return: Always 0 (success)
  */
 
-int main (void)
+int main(void)
 {
 	int n;
+
 	srand(time(0));
 	n = rand() - RAND_MAX / 2;
 
