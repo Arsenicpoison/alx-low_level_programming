@@ -4,9 +4,7 @@
 
 /**
  * main block if else 
- *
  *Description: get a random number and say if is positive or negative
- *
  * Return: Always 0 (success)
  */
 
