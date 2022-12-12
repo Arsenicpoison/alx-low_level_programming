@@ -1,13 +1,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-
 /**
- * main block if else 
- *Description: get a random number and say if is positive or negative
+ * main - main  block
+ *description: get a random number and say if is positive or negative
  * Return: Always 0 (success)
  */
-
 int main(void)
 {
 	int n;
