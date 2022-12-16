@@ -5,10 +5,10 @@
  * @n:integer to ckeck
  * Return: 0
  */
-void main(int n)
+void main(int i)
 {
-	int n = 0;
+	int i = 0;
 
-	positive_or_negative(n);
+	positive_or_negative(i);
 	return (0);
-i}
+}
