@@ -6,7 +6,7 @@
  *
  * Return: 1 if c is lowercase, return 0 otherwise.
  */
-int _isloter(int c)
+int _islower(int c)
 {
 	if  (c >= 'a' && c <= 'z')
 		return (1);
