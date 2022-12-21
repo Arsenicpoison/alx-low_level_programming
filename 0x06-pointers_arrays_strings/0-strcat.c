@@ -3,7 +3,7 @@
  * _strcat - concatenation of 2 string
  * @dest: destiny string
  * @src: source
- * Return: Destiny
+ * Return: Destiny string
  */
 char *_strcat(char *dest, char *src)
 {
