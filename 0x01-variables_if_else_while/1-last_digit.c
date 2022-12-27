@@ -3,7 +3,7 @@
 #include <time.h>
 
 /**
- * main - print last digit of n
+ * main - print las the digit of n
  *
  * Return: (0)
  */
