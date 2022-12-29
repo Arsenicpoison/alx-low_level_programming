@@ -7,7 +7,7 @@
  */
 int main(void)
 {
-	chr leter_a, leter_z;
+	char leter_a, leter_z;
 
 	leter_a = 'a';
 	leter_z = 'z';
