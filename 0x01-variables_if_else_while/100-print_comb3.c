@@ -16,7 +16,7 @@ int main(void)
 		{
 			putchar(n);
 			putchar(m);
-			if (n == 56 && m == 58)
+			if (n == 56 && m == 57)
 			{
 				continue;
 			}
