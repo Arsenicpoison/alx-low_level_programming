@@ -7,13 +7,13 @@
 
 void _puts_recursion(char *s)
 {
-	if (*s == '\0')
+	if (*s)
 	{
 		_putchar(*s);
 		_puts_recusion(s + 1);
 	}
 	else
 	{
-		_putchar(*s);
+		_putchar("\n");
 	}
 }
