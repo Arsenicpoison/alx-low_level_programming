@@ -5,7 +5,7 @@
  * @n:integer to ckeck
  * Return: 0
  */
-void main(int i)
+int main(void)
 {
 	int i = 0;
 
