@@ -1,7 +1,7 @@
 #include "main.h"
-#include <limits.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <limits.h>
 
 /**
  * main - multiplies two positive numbers
@@ -22,14 +22,14 @@ int main(int argc, char *argv[])
 	}
 	while (count1 < argc)
 	{
-	while (argv[count1][count2] != '\0')
-	{
-		if (argv[count1][count2] > 57 || argv[count1][count2] < 48)
+		for (count2 = 0; argv[count1][count2] != '\0'; count2++)
 		{
-			printf("Error\n");
-			exit(98);
+			if (argv[count1][count2] > 57 || argv[count1][count2] < 48)
+			{
+				printf("Error\n");
+				exit(98);
+			}
 		}
-	}
 		count1++;
 	}
 	mul = atol(argv[1]) * atol(argv[2]);
