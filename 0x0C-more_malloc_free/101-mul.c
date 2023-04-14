@@ -11,16 +11,16 @@
 **/
 int main(int argc, char *argv[])
 {
-	int count1, count2;
 	unsigned long mul;
+	int count1, count2;
 
-	mul = 0;
 	if (argc != 3)
 	{
 		printf("Error\n");
 		exit(98);
 	}
-	while (count1 < argc)
+
+	for (count1 = 1; count1 < argc; count1++)
 	{
 		for (count2 = 0; argv[count1][count2] != '\0'; count2++)
 		{
@@ -30,7 +30,6 @@ int main(int argc, char *argv[])
 				exit(98);
 			}
 		}
-		count1++;
 	}
 	mul = atol(argv[1]) * atol(argv[2]);
 	printf("%lu\n", mul);
