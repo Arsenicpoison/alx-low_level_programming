@@ -3,19 +3,26 @@
 #include <stdlib.h>
 
 /**
-* print_dog - prints a struct dog
-*@d: dog identification
-*
-*/
+ * print_dog - Prints a struct dog
+ * @d: The struct dog to be displayed
+ */
 void print_dog(struct dog *d)
 {
 	if (d == NULL)
 	{
 		return;
 	}
+	if (d->name == NULL)
+	{
+		printf("Name: (nil)\n");
+	}
+	else
+	{
+		printf("Name: %s\n", d->name);
+	}
 	if (d->age < 0)
 	{
-		printf("nil\n");
+		printf("Age: (nil)\n");
 	}
 	else
 	{
@@ -23,18 +30,10 @@ void print_dog(struct dog *d)
 	}
 	if (d->owner == NULL)
 	{
-		printf("nil\n");
+		printf("Owner: (nil)\n");
 	}
 	else
 	{
 		printf("Owner: %s\n", d->owner);
-	}
-	if (d->name == NULL)
-	{
-		printf("nil\n");
-	}
-	else
-	{
-		printf("Name: %s\n", d->name);
 	}
 }
