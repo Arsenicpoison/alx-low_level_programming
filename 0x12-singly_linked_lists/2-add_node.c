@@ -1,40 +1,53 @@
 #include "lists.h"
+#include <string.h>
+#include <stdlib.h>
 
 /**
- * add_node - adds a new node at the beginning of a list
- *@head: pointer to the head of the list
- *@str: string to be added
- *
- * Return: returns the address to the new element or NULL
- * if failed
-*/
-
-list_t *add_node(list_t **head, const char *str)
+ * _strlen - Count the length of a string.
+ * @s: String.
+ * Return: Length.
+ */
+int _strlen(char *s)
 {
-	char *dup;
-	int len;
-	list_t *new_node;
+	int c;/*Counter of characters*/
 
-	new_node = malloc(sizeof(list_t));
-	if (new_node == NULL)
-		return (NULL);
+	for (c = 0; s[c]; c++)
+		;
 
-	dup = strdup(str);
-	if (dup == NULL)
-	{
-		free(new_node);
-		return (NULL);
-	}
-	for (len = 0; str[len];)
-		len++;
-
-	new_node->str = dup;
-	new_node->len = len;
-	new_node->next = *head;
-
-	*head = new_node;
-
-	return (new_node);
-
+	return (c);
 }
 
+/**
+ * add_node - Add a new node at the beginning of a list_t list.
+ * @head: Pointer to pointer head of the linked list.
+ * @str: String of the node to add.
+ * Return: The address of the new element, or NULL if it failed.
+ */
+list_t *add_node(list_t **head, const char *str)
+{
+	list_t *new = NULL;/*New node*/
+
+	if (str == NULL)
+		return (NULL);
+
+	/*Allocate memory for a new node*/
+	new = malloc(sizeof(list_t));
+	if (new == NULL)
+		return (NULL);
+
+	/*Create a new node*/
+	new->str = strdup(str);
+
+	/*If strdup fail -> Free the new node*/
+	if (new->str == NULL)
+	{
+		free(new);
+		return (NULL);
+	}
+
+	new->len = _strlen(new->str);
+	new->next = *head;
+	*head = new;
+
+	return (new);
+}
