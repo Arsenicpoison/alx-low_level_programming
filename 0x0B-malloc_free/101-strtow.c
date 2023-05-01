@@ -1,96 +1,76 @@
+#include <stdlib.h>
 #include "main.h"
-
 /**
-*strtow - devide stirng into words
-*@str: string to be devided
-*Return: pointer to the array of splitted words
-*/
+ * count_word - count the number of words in a string
+ * @s: string to evaluate
+ *
+ * Return: number of words
+ */
+int count_word(char *s)
+{
+	int flag, ca, w;
 
+	flag = 0;
+	w = 0;
+
+	for (ca = 0; s[ca] != '\0'; ca++)
+	{
+		if (s[ca] == ' ')
+			flag = 0;
+		else if (flag == 0)
+		{
+			flag = 1;
+			w++;
+		}
+	}
+
+	return (w);
+}
+/**
+ * **strtow - split a string into words
+ * @str: string to split
+ * Return: pointer to an array of string
+ * or NULL
+ */
 char **strtow(char *str)
 {
-char **split;
-int a, b = 0, temp = 0;
-int size = 0, words = num_words(str);
+	char **matrix, *tmp;
+	int a, k = 0, len = 0, words, ca = 0, start, end;
 
-if (words == 0)
-return (NULL);
-split = (char **) malloc(sizeof(char *) * (words + 1));
-if (split != NULL)
-{
-for (a = 0; a <= len(str) && words; a++)
-{
-if ((str[a] != ' ') && (str[a] != '\0'))
-size++;
-else if (((str[a] == ' ') || (str[a] == '\0')) && a && (str[a - 1] != ' '))
-{
-split[b] = (char *) malloc(sizeof(char) * size + 1);
-if (split[b] != NULL)
-{
-while (temp < size)
-{
-split[b][temp] = str[(a - size) +temp];
-temp++;
-}
-split[b][temp] = '\0';
-size = temp = 0;
-b++;
-}
-else
-while (b-- >= 0)
-free(split[b]);
-free(split);
-return (NULL);
-}
-}
-split[words] = NULL;
-return (split);
-}
-else
-return (NULL);
-}
-/**
-* num_words - counts the number of words in str
-*@str: string to be used
-*
-*Return: number of words
-*/
-int num_words(char *str)
-{
-int a = 0, words = 0;
+	while (*(str + len))
+		len++;
+	words = count_word(str);
+	if (words == 0)
+		return (NULL);
 
-while (a <= len(str))
-{
-if ((str[a] != ' ') && (str[a] != '\0'))
-{
-a++;
-}
-else if (((str[a] == ' ') || (str[a] == '\0')) && a && (str[a - 1] != ' '))
-{
-words += 1;
-a++;
-}
-else
-{
-a++;
-}
-}
-return (words);
-}
+	matrix = (char **) malloc(sizeof(char *) * (words + 1));
+	if (matrix == NULL)
+		return (NULL);
 
-/**
-* len - returns length of string
-* @str: string to be counted*
-* Return: length of the string
-*/
+	for (a = 0; a <= len; a++)
+	{
+		if (str[a] == ' ' || str[a] == '\0')
+		{
+			if (ca)
+			{
+				end = a;
+				tmp = (char *) malloc(sizeof(char) * (ca + 1));
+				if (tmp == NULL)
+					return (NULL);
 
-int len(char *str)
-{
-int leng = 0;
+				while (start < end)
+				*tmp++ = str[start++];
+				*tmp = '\0';
+				matrix[k] = tmp - ca;
+				k++;
+				ca = 0;
+			}
+		}
+		else if (ca++ == 0)
+			start = a;
+	}
 
-if (str != NULL)
-{
-while (str[leng])
-leng++;
-}
-return (leng);
+	matrix[k] = NULL;
+
+	return (matrix);
 }
