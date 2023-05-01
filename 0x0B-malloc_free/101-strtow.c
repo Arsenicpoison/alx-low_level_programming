@@ -33,7 +33,7 @@ temp++;
 }
 split[b][temp] = '\0';
 size = temp = 0;
-j++;
+b++;
 }
 else
 while (b-- >= 0)
@@ -89,7 +89,7 @@ int leng = 0;
 
 if (str != NULL)
 {
-while (str[len])
+while (str[leng])
 leng++;
 }
 return (leng);
