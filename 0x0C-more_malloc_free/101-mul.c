@@ -4,34 +4,93 @@
 #include <limits.h>
 
 /**
- * main - multiplies two positive numbers
- * @argc: arguments
- * @argv: args
- * Return: int
-**/
-int main(int argc, char *argv[])
+ * _strlen - return length of a string
+ * @s: string to be measured
+ * Return: length of the string
+ */
+int _strlen(char *s)
 {
-	unsigned long mul;
-	int count1, count2;
+	int count = 0;
 
-	if (argc != 3)
+	while (*(s + count))
+		count++;
+
+	return (count);
+}
+
+/**
+ * _isdigit - checks for a digit 0-9
+ * @c: char to be checked
+ * Return: 1 if c is a digit, otherwise 0
+ */
+int _isdigit(int c)
+{
+	return (c >= '0' && c <= '9');
+}
+
+/**
+ * print_error - prints Error, followed by a new line, to standard error
+ *
+ * Return: void
+ */
+void print_error(void)
+{
+	int count = 0;
+	char *error = "Error\n";
+
+	while (*(error + count))
 	{
-		printf("Error\n");
+		_putchar(*(error + count));
+		count++;
+	}
+}
+
+/**
+ * main - multiplies two positive numbers
+ * @argc: number of arguments passed to the program
+ * @argv: array of arguments
+ *
+ * Return: 0 if successful, 98 if an error occurs
+ */
+int main(int argc, char **argv)
+{
+	int a, b, len1, len2, len_res, number1, number2, res_num;
+	int *result;
+
+	af(argc != 3)
+	{
+		print_error();
 		exit(98);
 	}
-
-	for (count1 = 1; count1 < argc; count1++)
-	{
-		for (count2 = 0; argv[count1][count2] != '\0'; count2++)
-		{
-			if (argv[count1][count2] > 57 || argv[count1][count2] < 48)
+	for (a = 1; a < argc; a++)
+		for (b = 0; *(*(argv + a) + b); b++)
+			if (!_isdigit(*(*(argv + a) + b)))
 			{
-				printf("Error\n");
+				print_error();
 				exit(98);
 			}
+	len1 = _strlen(*(argv + 1)), len2 = _strlen(*(argv + 2));
+	len_res = len1 + len2;
+	result = calloc(len_res, sizeof(int));
+	if (!result)
+		return (1);
+	for (a = len1 - 1; a >= 0; a--)
+	{
+		number1 = *(*(argv + 1) + a) - '0';
+		res_num = 0;
+		for (b = len2 - 1; b >= 0; b--)
+		{
+			number2 = *(*(argv + 2) + b) - '0';
+			res_num = *(result + a + b + 1) + (number1 * number2);
+			*(result + a + b + 1) = res_num % 10;
+			*(result + a + b) += res_num / 10;
 		}
 	}
-	mul = atol(argv[1]) * atol(argv[2]);
-	printf("%lu\n", mul);
+	for (a = 0; a < len_res - 1 && !*(result + a); a++)
+		;
+	for (; a < len_res; a++)
+		_putchar(*(result + a) + '0');
+	_putchar('\n');
+	free(result);
 	return (0);
 }
