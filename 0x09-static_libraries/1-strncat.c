@@ -1,13 +1,31 @@
 #include "main.h"
 
 /**
- * _strcat - concatenate 2 trings
+ * _strncat - Concatenate two trings
  * @dest: destiny
  * @src: source
  * @n: bytes from src
  * Return: Destiny string dest
  */
-char *_strcat(char *dest, char *src, int n)
+char *_strncat(char *dest, char *src, int n)
 {
-	return (dest,src,n);
+	int a;
+	int b;
+
+
+	a = 0;
+	while (dest[a] != '\0')
+	{
+		b++;
+	}
+	b = 0;
+	while (b < n && src[b] != '\0')
+	{
+	dest[a] = src[b];
+	a++;
+	b++;
+	}
+	dest[a] = '\0';
+	return (dest);
+
 }
