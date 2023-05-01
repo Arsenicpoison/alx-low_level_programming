@@ -57,7 +57,7 @@ int main(int argc, char **argv)
 	int a, b, len1, len2, len_res, number1, number2, res_num;
 	int *result;
 
-	af(argc != 3)
+	if (argc != 3)
 	{
 		print_error();
 		exit(98);
