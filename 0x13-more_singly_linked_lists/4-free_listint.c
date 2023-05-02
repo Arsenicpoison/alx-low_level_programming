@@ -10,6 +10,6 @@ void free_listint(listint_t *head)
 
 	for (; head != NULL;)
 		tail = head->next;
-		free(head);
-		head = tail;
+	free(head);
+	head = tail;
 }
