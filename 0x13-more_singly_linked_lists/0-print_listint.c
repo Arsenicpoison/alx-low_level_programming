@@ -8,12 +8,14 @@
  */
 size_t print_listint(const listint_t *h)
 {
-	size_t nombre_nodes = 0;
+const listint_t *click = h;
+size_t i = 0;
 
-	for (nombre_nodes = 0; h != NULL; nombre_nodes++)
-	{
-		printf("%d\n", h->n);
-		h = h->next;
-	}
-	return (nombre_nodes);
+while (click != NULL)
+{
+printf("%d\n", click->n);
+i += 1;
+click = click->next;
+}
+return (i);
 }
