@@ -10,13 +10,13 @@
  */
 size_t print_listint(const listint_t *h)
 {
-	unsigned int a = 0;
+	unsigned int b = 0;
 	const listint_t	 *new_node = h;
 
 	for (; new_node; new_node = new_node->next)
 	{
 		printf("%d\n", new_node->n);
-		a++;
+		b++;
 	}
-	return (a);
+	return (b);
 }
