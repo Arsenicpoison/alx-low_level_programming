@@ -10,12 +10,13 @@
  */
 size_t print_listint(const listint_t *h)
 {
-	size_t nod;
+	unsigned int a = 0;
+	const listint_t	 *new_node = h;
 
-	for (nod = 0; h != NULL; h = h->next)
+	for (; new_node; new_node = new_node->next)
 	{
-		printf("%d\n", h->n);
-		nod++;
+		printf("%d\n", new_node->n);
+		a++;
 	}
-	return (nod);
+	return (a);
 }
